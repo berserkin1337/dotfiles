@@ -1,4 +1,4 @@
-call plug#begin("~/.config/nvim/plugged")
+call plug#begin("~/.nvim/plugged")
   Plug 'hoob3rt/lualine.nvim'
   Plug 'folke/lsp-colors.nvim'
   Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
