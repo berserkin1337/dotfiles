@@ -16,15 +16,15 @@ M.options, M.ui, M.mappings, M.plugins = {}, {}, {}, {}
 -- }
 
 M.ui = {
-  theme = "gruvbox"
+   theme = "gruvbox",
 }
 
 -- NvChad included plugin options & overrides
 M.plugins = {
-  status = {
-    vim_matchup = true,
-    colorizer = true
-  },
+   status = {
+      vim_matchup = true,
+      colorizer = true,
+   },
    options = {
       --   lspconfig = {
       --    path of file containing setups of different lsps (ex : "custom.plugins.lspconfig"), read the docs for more info
