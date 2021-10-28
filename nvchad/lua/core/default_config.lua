@@ -17,6 +17,7 @@ M.options = {
    number = true,
    -- relative numbers in normal mode tool at the bottom of options.lua
    numberwidth = 2,
+   guifont="Comic Mono",
    relativenumber = false,
    expandtab = true,
    shiftwidth = 2,
@@ -44,6 +45,7 @@ M.ui = {
    italic_comments = false,
    -- theme to be used, check available themes with `<leader> + t + h`
    theme = "onedark",
+   guifont="Comic Mono",
    -- toggle between two themes, see theme_toggler mappings
    theme_toggler = {
       "onedark",

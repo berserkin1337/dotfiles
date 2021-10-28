@@ -39,7 +39,7 @@ opt.tabstop = options.tabstop
 opt.termguicolors = true
 opt.timeoutlen = options.timeoutlen
 opt.undofile = options.undofile
-
+opt.guifont = "FiraCode Nerd Font"
 -- interval for writing swap file to disk, also used by gitsigns
 opt.updatetime = options.updatetime
 

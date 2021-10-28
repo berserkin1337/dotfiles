@@ -42,6 +42,17 @@ hooks.add("setup_mappings", function(map)
    map("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
    map("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
    map("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+   map("n", "<leader>dn", ":lua require'dap'.continue()<CR>", opts)
+   map("n", "<S-j>", ":lua require'dap'.step_over()<CR>", opts)
+   map("n", "<S-l>", ":lua require'dap'.step_into()<CR>", opts)
+   map("n", "<S-k>", ":lua require'dap'.step_out()<CR>", opts)
+   map("n", "<leader>dh", ":lua require'dap'.toggle_breakpoint()<CR>", opts)
+   map("n", "<leader>d_", ":lua require'dap'.repl_open()<CR>", opts)
+   map("n", "<leader>di", ":lua require'dap.ui.variables'.hover(function() return vim.fn.expand('<cexpr>') end)<CR>", opts)
+   map("v", "<leader>di", ":lua require'dap.ui.variables'.visual_hover()<CR>", opts)
+   map("n", "<leader>d?", ":lua require'dap.ui.variables'.scopes()<CR>", opts)
+   map("n", "<leader>de", ":lua require'dap'.set_exception_breakpoints({'all'})<CR>", opts)
+   map("n", "<leader>da", ":lua require'debugHelper'.attach()", opts)
 end)
 
 -- To add new plugins, use the "install_plugin" hook,
@@ -75,6 +86,18 @@ hooks.add("install_plugins", function(use)
    }
    use {
       "tpope/vim-surround",
+   }
+   use {
+      "Pocco81/DAPInstall.nvim",
+      config = function ()
+       require "custom.plugin_confs.dap-install"
+      end
+   }
+   use {
+      "mfussenegger/nvim-dap",
+      config = function()
+         require "custom.plugin_confs.nvim-dap"
+      end,
    }
 
    -- load it after nvim-lspconfig , since we'll use some lspconfig stuff in the null-ls config!
