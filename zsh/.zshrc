@@ -1,8 +1,7 @@
-# Set up the prompt
 
-autoload -Uz promptinit
-promptinit
-prompt adam1
+#autoload -Uz promptinit
+#promptinit
+#prompt adam1
 
 setopt histignorealldups sharehistory
 
@@ -39,12 +38,11 @@ export PATH=~/.npm-global/bin:$PATH
 export PATH=~/cargo/bin:$PATH
 export PATH=~/.local/bin:$PATH
 export ML="/home/aviral/ml"
-alias v=nvim
-alias vim='nvim'
-alias sai="sudo apt install"
+alias tmux="tmux -u"
 autoload -Uz compinit && compinit
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autoswitch-virtualenv/autoswitch_virtualenv.plugin.zsh
+source  ~/.zsh/zsh-git-prompt/zshrc.sh
 export TERM=screen-256color
-export EDITOR='nvim'
+PROMPT='%B%m%~%b$(git_super_status) %# '

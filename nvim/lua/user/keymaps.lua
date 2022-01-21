@@ -14,9 +14,7 @@ vim.g.maplocalleader = " "
 --   normal_mode = "n",
 --   insert_mode = "i",
 --   visual_mode = "v",
---   visual_block_mode = "x",
---   term_mode = "t",
---   command_mode = "c",
+--   visual_block_mode = "x", term_mode = "t", command_mode = "c",
 
 -- Normal --
 -- Better window navigation
@@ -59,6 +57,20 @@ keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
+
+-- Lsp Key maps --
+keymap("n","gd",'<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+keymap("n","gD",'<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+keymap("n","K",'<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+keymap("n","gi",'<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+keymap("n","<C-k>",'<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+keymap("n","<space>wa",'<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
+keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 
 -- Terminal --
 -- Better terminal navigation

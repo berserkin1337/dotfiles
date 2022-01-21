@@ -57,7 +57,7 @@ return packer.startup(function(use)
   use "lukas-reineke/indent-blankline.nvim"
   use "goolord/alpha-nvim"
   use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
-  use "zeertzjq/which-key.nvim"
+  use "folke/which-key.nvim"
   -- Colorschemes
   -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
   use "lunarvim/darkplus.nvim"
@@ -80,7 +80,7 @@ return packer.startup(function(use)
   use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
 
-  -- rust 
+  -- rust
   use "simrat39/rust-tools.nvim"
   -- debugging
   use "mfussenegger/nvim-dap"
