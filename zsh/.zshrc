@@ -43,6 +43,5 @@ autoload -Uz compinit && compinit
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autoswitch-virtualenv/autoswitch_virtualenv.plugin.zsh
-source  ~/.zsh/zsh-git-prompt/zshrc.sh
 export TERM=screen-256color
 PROMPT='%B%m%~%b$(git_super_status) %# '
