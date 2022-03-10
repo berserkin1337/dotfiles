@@ -6,7 +6,7 @@ vim.cmd [[
     autocmd BufWinEnter * :set formatoptions-=cro
     autocmd FileType qf set nobuflisted
   augroup end
-
+    set guifont=JetBrainsMono\ Nerd\ Font:h13
   augroup _git
     autocmd!
     autocmd FileType gitcommit setlocal wrap
