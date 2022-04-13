@@ -74,9 +74,6 @@ return packer.startup(function(use)
   -- snippets
   use "L3MON4D3/LuaSnip" --snippet engine
   use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
-  use {'dsznajder/vscode-es7-javascript-react-snippets',
-    run = 'yarn install --frozen-lockfile && yarn compile'
-  }
   require('luasnip').filetype_extend("javascript", { "javascriptreact" })
   require('luasnip').filetype_extend("javascript", { "html" })
   -- LSP
