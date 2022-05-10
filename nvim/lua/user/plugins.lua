@@ -60,9 +60,11 @@ return packer.startup(function(use)
   use "folke/which-key.nvim"
   -- Colorschemes
   -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
+  use "RRethy/nvim-base16"
   use "lunarvim/darkplus.nvim"
   use "folke/tokyonight.nvim"
   use "catppuccin/nvim"
+  use "ellisonleao/gruvbox.nvim"
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
   use "hrsh7th/cmp-buffer" -- buffer completions
@@ -74,8 +76,8 @@ return packer.startup(function(use)
   -- snippets
   use "L3MON4D3/LuaSnip" --snippet engine
   use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
-  require('luasnip').filetype_extend("javascript", { "javascriptreact" })
-  require('luasnip').filetype_extend("javascript", { "html" })
+--  require('luasnip').filetype_extend("javascript", { "javascriptreact" })
+ -- require('luasnip').filetype_extend("javascript", { "html" })
   -- LSP
   use "neovim/nvim-lspconfig" -- enable LSP
   use "williamboman/nvim-lsp-installer" -- simple to use language server installer
