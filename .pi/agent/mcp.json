@@ -1,0 +1,16 @@
+{
+  "settings": {
+    "toolPrefix": "server",
+    "idleTimeout": 10,
+    "requestTimeoutMs": 60000
+  },
+  "mcpServers": {
+    "chrome-devtools": {
+      "command": "/home/aviral/.pi/agent/bin/chrome-devtools-mcp-wsl",
+      "args": [],
+      "lifecycle": "lazy",
+      "idleTimeout": 10,
+      "requestTimeoutMs": 60000
+    }
+  }
+}

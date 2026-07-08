@@ -1,0 +1,18 @@
+{
+  "lastChangelogVersion": "0.80.3",
+  "theme": "dark",
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-5.4",
+  "defaultThinkingLevel": "medium",
+  "packages": [
+    "npm:pi-web-access",
+    "npm:pi-mcp-adapter",
+    "npm:pi-hermes-memory",
+    "npm:pi-subagents",
+    "npm:@narumitw/pi-plan-mode",
+    "npm:@juicesharp/rpiv-todo",
+    "npm:@ff-labs/pi-fff",
+    "npm:@barlevalon/grill-with-docs-skill",
+    "npm:@barlevalon/improve-codebase-architecture-skill"
+  ]
+}

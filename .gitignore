@@ -4,3 +4,11 @@
 # Fish generated/runtime state; keep the repo shareable.
 .config/fish/fish_variables
 .config/fish/generated_completions/
+
+# Pi sensitive/runtime state
+.pi/agent/auth.json
+.pi/agent/mcp-cache.json
+.pi/agent/pi-hermes-memory/
+.pi/agent/sessions/
+.pi/agent/npm/node_modules/
+.pi/agent/bin/
