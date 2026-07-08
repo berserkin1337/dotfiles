@@ -1,0 +1,6 @@
+# macOS
+.DS_Store
+
+# Fish generated/runtime state; keep the repo shareable.
+.config/fish/fish_variables
+.config/fish/generated_completions/
