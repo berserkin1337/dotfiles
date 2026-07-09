@@ -11,6 +11,8 @@ Normal home-relative dotfiles. This repo is **not** in chezmoi format.
 - Neovim config: `.config/nvim/init.lua`
 - Pi config: `.pi/agent/{AGENTS.md,settings.json,mcp.json,keybindings.json}`
 
+The Pi MCP config is kept cross-platform: `mcp.json` uses `npx chrome-devtools-mcp@latest` instead of a machine-specific WSL path.
+
 ## Intentionally excluded
 
 - `fish_variables` because it contains machine-specific universal variables and absolute paths
@@ -34,6 +36,11 @@ After installing Fish config, restore Fisher plugins from Fish:
 curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source
 fisher update
 ```
+
+Pi note:
+
+- `mcp.json` expects `npx` to be available on the host machine.
+- `chrome-devtools-mcp` should work on Linux, macOS, and Windows without hardcoded local paths.
 
 For tmux plugins, install TPM if needed:
 

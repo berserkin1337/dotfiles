@@ -6,8 +6,15 @@
   },
   "mcpServers": {
     "chrome-devtools": {
-      "command": "/home/aviral/.pi/agent/bin/chrome-devtools-mcp-wsl",
-      "args": [],
+      "command": "npx",
+      "args": [
+        "-y",
+        "chrome-devtools-mcp@latest",
+        "--no-usage-statistics",
+        "--slim",
+        "--screenshotFormat=jpeg",
+        "--screenshotMaxWidth=1280"
+      ],
       "lifecycle": "lazy",
       "idleTimeout": 10,
       "requestTimeoutMs": 60000
