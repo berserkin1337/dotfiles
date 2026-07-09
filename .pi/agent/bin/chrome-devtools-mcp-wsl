@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Launch/connect Chrome DevTools MCP from WSL to Windows Chrome.
+# It starts Windows Chrome on 127.0.0.1:9224 and a Windows-side TCP proxy on the WSL vEthernet IP:9225,
+# because Windows Chrome binds DevTools to Windows loopback and WSL cannot directly reach that loopback.
+
+WIN_WSL_IP=$(powershell.exe -NoProfile -Command '(Get-NetIPAddress -AddressFamily IPv4 | Where-Object InterfaceAlias -like "*WSL*" | Select-Object -First 1 -ExpandProperty IPAddress)' </dev/null | tr -d '\r' | head -n1)
+if [[ -z "${WIN_WSL_IP}" ]]; then
+  echo "Could not determine Windows WSL vEthernet IP" >&2
+  exit 1
+fi
+
+# Copy proxy script to Windows temp and start Chrome/proxy if needed. All output goes to stderr so MCP stdio stays clean.
+powershell.exe -NoProfile -ExecutionPolicy Bypass -Command '
+$ErrorActionPreference="Stop"
+$chrome="C:\Program Files\Google\Chrome\Application\chrome.exe"
+if (!(Test-Path $chrome)) { throw "Chrome not found at $chrome" }
+$profile="$env:TEMP\pi-chrome-devtools-profile-9224"
+if (!(Get-NetTCPConnection -LocalPort 9224 -ErrorAction SilentlyContinue)) {
+  Start-Process -FilePath $chrome -ArgumentList @("--remote-debugging-port=9224", "--user-data-dir=$profile", "--no-first-run", "--no-default-browser-check", "about:blank")
+  Start-Sleep -Seconds 3
+}
+$listen=(Get-NetIPAddress -AddressFamily IPv4 | Where-Object InterfaceAlias -like "*WSL*" | Select-Object -First 1 -ExpandProperty IPAddress)
+if (!(Get-NetTCPConnection -LocalAddress $listen -LocalPort 9225 -ErrorAction SilentlyContinue)) {
+  $src="\\wsl.localhost\archlinux\home\aviral\.pi\agent\bin\win-tcp-proxy.js"
+  $dst="$env:TEMP\win-tcp-proxy.js"
+  Copy-Item $src $dst -Force
+  Start-Process node.exe -WindowStyle Hidden -ArgumentList @($dst,$listen,"9225","127.0.0.1","9224")
+  Start-Sleep -Seconds 1
+}
+' </dev/null >&2
+
+exec npx -y chrome-devtools-mcp@latest \
+  --browserUrl="http://${WIN_WSL_IP}:9225" \
+  --no-usage-statistics \
+  --slim \
+  --screenshotFormat=jpeg \
+  --screenshotMaxWidth=1280

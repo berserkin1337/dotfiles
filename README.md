@@ -11,7 +11,7 @@ Normal home-relative dotfiles. This repo is **not** in chezmoi format.
 - Neovim config: `.config/nvim/init.lua`
 - Pi config: `.pi/agent/{AGENTS.md,settings.json,mcp.json,keybindings.json}`
 
-The Pi MCP config is kept cross-platform: `mcp.json` uses `npx chrome-devtools-mcp@latest` instead of a machine-specific WSL path.
+The Pi MCP config is kept cross-platform: `mcp.json` launches a small wrapper script that detects WSL, uses the WSL-specific Chrome bridge there, and falls back to `npx chrome-devtools-mcp@latest` elsewhere.
 
 ## Intentionally excluded
 
@@ -39,8 +39,9 @@ fisher update
 
 Pi note:
 
-- `mcp.json` expects `npx` to be available on the host machine.
-- `chrome-devtools-mcp` should work on Linux, macOS, and Windows without hardcoded local paths.
+- `mcp.json` expects `bash` and `npx` to be available on the host machine.
+- On WSL, the wrapper uses the checked-in WSL bridge.
+- On Linux, macOS, and non-WSL Windows shells, it falls back to `chrome-devtools-mcp` without hardcoded local paths.
 
 For tmux plugins, install TPM if needed:
 

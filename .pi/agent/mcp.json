@@ -6,14 +6,10 @@
   },
   "mcpServers": {
     "chrome-devtools": {
-      "command": "npx",
+      "command": "bash",
       "args": [
-        "-y",
-        "chrome-devtools-mcp@latest",
-        "--no-usage-statistics",
-        "--slim",
-        "--screenshotFormat=jpeg",
-        "--screenshotMaxWidth=1280"
+        "-lc",
+        "exec \"$HOME/.pi/agent/bin/chrome-devtools-mcp\""
       ],
       "lifecycle": "lazy",
       "idleTimeout": 10,

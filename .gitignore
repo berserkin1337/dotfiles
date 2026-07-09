@@ -11,4 +11,9 @@
 .pi/agent/pi-hermes-memory/
 .pi/agent/sessions/
 .pi/agent/npm/node_modules/
-.pi/agent/bin/
+.pi/agent/bin/*
+!.pi/agent/bin/
+!.pi/agent/bin/chrome-devtools-mcp
+!.pi/agent/bin/chrome-devtools-mcp-wsl
+!.pi/agent/bin/win-tcp-proxy.js
+!.pi/agent/bin/win-tcp-proxy.ps1
