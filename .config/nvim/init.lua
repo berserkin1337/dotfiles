@@ -300,7 +300,19 @@ require("lazy").setup({
   {
     "folke/trouble.nvim",
     cmd = "Trouble",
-    opts = {},
+    opts = {
+      modes = {
+        diagnostics = {
+          -- Keep external dependencies and the Go standard library out of the list.
+          filter = function(items)
+            local cwd = (vim.uv or vim.loop).cwd()
+            return vim.tbl_filter(function(item)
+              return item.filename and vim.fs.relpath(cwd, item.filename) ~= nil
+            end, items)
+          end,
+        },
+      },
+    },
     keys = {
       { "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", desc = "Diagnostics" },
       { "<leader>xq", "<cmd>Trouble qflist toggle<cr>", desc = "Quickfix" },
